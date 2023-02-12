@@ -16,7 +16,10 @@ strings /proc/$$/environ
 
 ```
 
-Dado que este lab está a ser produzido num docker container sem a presença de uma máquina virtual seed usar o browser para identificar quais variáveis de ambiente são definidas por este não pode ser realizado, a equipa apenas vai demonstrar neste relatório a tarefa envolvendo o uso do comando **curl**.
+
+### Task 2.A: Using Browser
+
+
 
 ### Task 2.A: Using Curl
 
