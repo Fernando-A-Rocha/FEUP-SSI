@@ -43,7 +43,7 @@ Se a opção ```-H``` estiver especificada então o conteúdo do user está espe
 
 ![-H option on curl](https://github.com/Fernando-A-Rocha/FEUP-SSI/blob/main/1-Shellshock/Screenshots/2_A_curl_h_option.png?raw=true)
 
-Como observar, existe uma série de variáveis de ambiente, que são valores que um servidor web envia neste caso para o program CGI, que espelham informação sobre o servidor e não são modificadas e outras que dão informação sobre os utilizadores e podem ser modificados como vimos. Ao usar o comando curl com as opções ```-A``` ```-e``` ```-H``` o atacante pode então injetar o seu próprio conteúdo para as variáveis de ambiente de uma programa CGI alvo.
+Como observamos, existe uma série de variáveis de ambiente, que são valores que um servidor web envia neste caso para o program CGI, que espelham informação sobre o servidor e não são modificadas e outras que dão informação sobre os utilizadores e podem ser modificadas como vimos. Ao usar o comando curl com as opções ```-A``` ```-e``` ```-H``` o atacante pode então injetar o seu próprio conteúdo para as variáveis de ambiente de um programa CGI alvo.
 
 ## Task 4: Getting a Reverse Shell via Shellshock Attack
 
