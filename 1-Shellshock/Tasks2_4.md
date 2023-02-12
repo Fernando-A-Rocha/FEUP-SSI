@@ -16,5 +16,31 @@ strings /proc/$$/environ
 
 ```
 
+Dado que este lab está a ser produzido num docker container sem a presença de uma máquina virtual seed usar o browser para identificar quais variáveis de ambiente são definidas por este não pode ser realizado, a equipa apenas vai demonstrar neste relatório a tarefa envolvendo o uso do comando **curl**.
+
+### Task 2.A: Using Curl
+
+Tendo como objetivo de definir a informação relativa a variáveis do ambiente para valores arbitrários, o comando **curl** permite aos users manipular campos num pedido HTTP utilizando certas opções.
+
+
+Se a opção ```-v``` estiver especificada então é imprimido o cabeçalho do pedido HTTP:
+
+![-v option on curl](https://github.com/Fernando-A-Rocha/FEUP-SSI/blob/main/1-Shellshock/Screenshots/2_A_curl_v_option.png?raw=true)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
