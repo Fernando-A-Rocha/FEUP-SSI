@@ -24,7 +24,7 @@ The group has followed the instructions on the lab page, and has documented the 
 
 Nesta tarefa inicial o objetivo é descobrir como funciona a vulnerabilidade shellshock. Para tal é necessário perceber como o bash interpreta variáveis de ambiente e como estas podem ser utilizadas para executar código arbitrário.
 
-Esta vulenrabilidade já não existe na versão mais recente de Bash. Por isso, foi disponibilizado o programa do bash vulnerável com o nome de `bash_shellshock` dentro da pasta `Labsetup/image_www`.
+Esta vulnerabilidade já não existe na versão mais recente de Bash. Por isso, foi disponibilizado o programa do bash vulnerável com o nome de `bash_shellshock` dentro da pasta `Labsetup/image_www`.
 
 Começamos por correr uma instância da imagem fornecida no Labsetup com o Docker.
 
@@ -51,7 +51,7 @@ Verificamos a versão do nosso bash a correr em shell no container:
 
 ![MyBashVer](Screenshots/MyBashVer.png)
 
-De seguida, lançamos o bash vulenrável e verificamos a versão do mesmo.
+De seguida, lançamos o bash vulnerável e verificamos a versão do mesmo.
 
 ![ShellshockBashVer](Screenshots/ShellshockBashVer.png)
 
