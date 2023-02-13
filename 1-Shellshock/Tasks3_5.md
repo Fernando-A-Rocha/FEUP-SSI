@@ -42,7 +42,7 @@ Não pois o ficheiro /etc/shadow, que não é visível a terceiros, é owned pel
 ![Shadow Permissions and www-data groups](Screenshots/3q1.png)
 
 ### 2
-Não pois os dados a injetar possuem espaços, algo que torna um URL inválido.
+Não pois os dados a injetar possuem espaços, algo que torna um URL inválido. Desta forma, este não é um método válido para efetuar o ataque shellshock.
 
 ![Question 2 output](Screenshots/3q2.png)
 
