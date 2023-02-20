@@ -2,7 +2,7 @@
 
 The objective for this task is to gain root privilege by exploiting the race condition vulnerability in this **SET-UID program**:
 
-```
+```c
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -77,7 +77,7 @@ To achieve this we need to write an attack program to run in parallel to the tar
 
 Our C attack program that removes and adds a symbolic link pointing to the */etc/passwd* file from the */tmp/XYZ* file looks like this:
 
-```
+```c
 #include <unistd.h>
 int main() {
 
@@ -100,7 +100,7 @@ To make this a successful attack we need to run the vulnerable program many time
 
 So according to the lab guide we may run the following shell script to run *vulp* in a loop, with the input that we want, in this case *test:U6aMy0wojraho:0:0:test:/root:/bin/bash* given by the *echo* command.
 
-```
+```bash
 #!/bin/bash
 CHECK_FILE="ls -l /etc/passwd"
 old=$($CHECK_FILE)
@@ -130,7 +130,7 @@ We can solve this issue by making *unlink()* and *symlink()* atomic.
 
 According to the lab guide now our attack program should look like this:
 
-```
+```c
 #define _GNU_SOURCE
 #include <stdio.h>
 #include <unistd.h>
