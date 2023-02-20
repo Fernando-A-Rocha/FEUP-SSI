@@ -47,13 +47,20 @@ sleep(10)
 ```
 
 
-```
-    if (!access(fn, W_OK)) {
-        sleep(10);
-        fp = fopen(fn, "a+");
+vul.c will look like this:
 
-    ...
 ```
+if (!access(fn, W_OK)) {
+    sleep(10);
+    fp = fopen(fn, "a+");
+...
+```
+
+This will give us a 10 second window to manually do something that results on the program adding a root account to the system.
+
+To achieve this we will create a */tmp/XYZ* file, run the program with the input that we need and link the file created to the password file:
+
+
 
 
 
