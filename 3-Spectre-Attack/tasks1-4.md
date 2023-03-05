@@ -9,20 +9,36 @@ The cache memory is faster than the main memory. The goal of this task is to obs
 
 We start by compiling and running the *CacheTime.c* file 10 times.
 
-The results we obtained in terms of memory access time are the following:
+The results we obtained in terms of memory access time (measured in CPU cycles) are the following:
 
-| Element      | Time (1) | Time (2) | Time (3) | Time (4)     | Time (5) | Time (6)  | Time (7) | Time (8)  | Time (9) | Time (10)  | Average Time Taken |  
+| Element [k*4096]     | Time (1) | Time (2) | Time (3) | Time (4)     | Time (5) | Time (6)  | Time (7) | Time (8)  | Time (9) | Time (10)  | Average Time Taken |  
 | :----:       |  :----:  |   :----: |  :----:  |    :----:    |   :----: |  :----:   |  :----:  |   :----:  | :----:   |   :----:   |       :----:       |
-| Header       | Title    | Here's th|Header    | Title        | Here's th|Header     | Title    | Here's thi|Title     | Here's this| Here's this        |
-| Header       | Title    | Here's th|Header    | Title        | Here's th|Header     | Title    | Here's thi|Title     | Here's this|Here's this         |
-| Header       | Title    | Here's th|Header    | Title        | Here's th|Header     | Title    | Here's thi|Title     | Here's this|      Here's this   |
-| Header       | Title    | Here's th|Header    | Title        | Here's th|Header     | Title    | Here's thi|Title     | Here's this|      Here's this   |
-| Header       | Title    | Here's th|Header    | Title        | Here's th|Header     | Title    | Here's thi|Title     | Here's this|      Here's this   | 
-| Header       | Title    | Here's th|Header    | Title        | Here's th|Header     | Title    | Here's thi|Title     | Here's this|      Here's this   |
-| Header       | Title    | Here's th|Header    | Title        | Here's th|Header     | Title    | Here's thi|Title     | Here's this|      Here's this   |
-| Header       | Title    | Here's th|Header    | Title        | Here's th|Header     | Title    | Here's thi|Title     | Here's this|      Here's this   |
-| Header       | Title    | Here's th|Header    | Title        | Here's th|Header     | Title    | Here's thi|Title     | Here's this|Here's this         |
-| Header       | Title    | Here's th|Header    | Title        | Here's th|Header     | Title    | Here's thi|Title     | Here's this| Here's this        |
+| A[0]      | 132    | 138|1290    | 120        | 124 |160     | 100    | 126|  104    | 174| **245**       |
+| A[1]       |  260   | 860|372    | 304       | 418| 232     | 282    | 242| 288     | 1174| **443**        |
+| A[2]       | 300    | 392|374    | 334        | 268|256     | 256    | 416| 264     | 278|   **314**   |
+| A[3]       | 60    | 114|432    | 102        | 114|118     | 154    | 234| 124     | 168|      **162**   |
+| A[4]       | 228    | 960| 304   | 240        | 262 |202     |  270   | 428| 260    | 308|      **346**   | 
+| A[5]       |   232  | 216|308    |  340       | 256|  282   | 200    | 422| 234     | 282|      **277**   |
+| A[6]       | 216    | 252|214    |    234     | 274|  206    | 266    | 448| 276     | 390 |      **278**   |
+| A[7]       | 86    | 122|138    |     114    | 134| 140     | 124    | 278| 114     | 168 |      **142**   |
+| A[8]       | 296    | 230|512    | 236       | 260| 238     |  234  | 372| 278     |  306| **296**         |
+| A[9]       | 244   | 260|272    | 246        | 270|  236    | 250    | 420| 240     | 274| **295**        |
+
+As we can observe the access time of *array[3*4096]* and *array[7*3096]* are faster than that of other elements. This is because we are accessing them from the cache (cache hit).
+
+The treshold the team defined to distinguish the two types of memory access is 190 CPU cycles.
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
