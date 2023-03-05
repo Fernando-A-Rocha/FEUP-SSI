@@ -26,7 +26,10 @@ The results we obtained in terms of memory access time (measured in CPU cycles) 
 
 As we can observe the access time of *array[3*4096]* and *array[7*3096]* are faster than that of other elements. This is because we are accessing them from the cache (cache hit).
 
-The treshold the team defined to distinguish the two types of memory access is 180 CPU cycles.
+The treshold the team defined to distinguish the two types of memory access is 190 CPU cycles.
+
+
+
 
 
 
