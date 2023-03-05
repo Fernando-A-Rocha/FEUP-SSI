@@ -29,6 +29,33 @@ As we can observe the access time of *array[3*4096]* and *array[7*3096]* are fas
 The treshold the team defined to distinguish the two types of memory access is 190 CPU cycles.
 
 
+## Task 4: The Spectre Attack
+
+From the previous tasks we could observe that some of the signs of the out-of-order execution are left behind, mainly not cleaning the CPU cache.
+
+The Spectre attack uses this to steal protected secrets.
+
+The goal for this task is to perform a basic Spectre attack and observe if we are able to steal the secret value.
+
+After compiling and running the *SpectreAttack.c* file we can observe that we were in fact able to steal the first byte of our secret value, in this case the letter *S* represented in the form of ascii code: 83.
+
+The value zero is also returned since all the steps of the out-of-order execution will be eventually reverted and *restrictedAccess()* therefore returns zero, that in fact is not the value of the secret.
+
+The results of this experiment can be seen below:
+
+![result](Screenshots/SpectreAttack.png)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
