@@ -32,7 +32,6 @@ int main() {
 	fprintf(fp, "%c", max, max);
 	//fprintf(fp, "The number of hits is %d\n", scores[max]);
     }
-    fprintf(fp, "\n");
     return 0;
 }
 ```
@@ -40,6 +39,4 @@ int main() {
 The result was printed to a file because of the need to include line _printf("*****\n")_ which floods the output but it's necessary in order for the attack to succeed.
 
 The file _secret.txt_:
-```
-Some Secret Value
-```
+![secret.txt](secret.png)
