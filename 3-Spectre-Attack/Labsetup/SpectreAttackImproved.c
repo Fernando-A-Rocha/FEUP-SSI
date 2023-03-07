@@ -13,7 +13,7 @@ uint8_t temp    = 0;
 char    *secret = "Some Secret Value";   
 uint8_t array[256*4096];
 
-#define CACHE_HIT_THRESHOLD (80)
+#define CACHE_HIT_THRESHOLD (130)
 #define DELTA 1024
 
 // Sandbox Function
@@ -91,9 +91,9 @@ int main() {
     reloadSideChannelImproved();
   }
 
-  int max = 0;
-  for (i = 0; i < 256; i++){
-    if(scores[max] < scores[i]) max = i;
+  int max = 1;
+  for (i = 1; i < 256; i++) {
+      if(scores[max] < scores[i]) max = i;
   }
 
   printf("Reading secret value at index %ld\n", index_beyond);
