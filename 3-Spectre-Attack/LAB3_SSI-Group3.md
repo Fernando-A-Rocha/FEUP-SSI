@@ -37,11 +37,13 @@ The results we obtained in terms of memory access time (measured in CPU cycles) 
 
 As we can observe the access time of *array[3*4096]* and *array[7*3096]* are faster than that of other elements. This is because we are accessing them from the cache (cache hit).
 
-The treshold the team defined to distinguish the two types of memory access is 130 CPU cycles. In our team, this proved to be adequate for all our setups.
+The treshold we deduce from these values to distinguish the two types of memory access is 190.
 
 ## Task 2: Using Cache as a Side Channel
 
 In this task we will use the FLUSH+RELOAD technique to perform a side channel attack to steal a protected secret.
+
+This and the following tasks were executed on machines a bit more performant than the one used in Task 1, so we had to set the threshold to 130 instead of 190.
 
 We changed the *CACHE_HIT_THRESHOLD* variable to the value previously chosen (130) and ran the program 20 times. We noted that the secret was correctly output all the times (94).
 
