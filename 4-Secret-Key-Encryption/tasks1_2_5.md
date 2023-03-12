@@ -4,7 +4,7 @@ In this task the objective is to find the original text behind a cipher-text and
 
 Portion of the original Cipher text:
 
-`
+```
 ytn xqavhq yzhu  xu qzupvd ltmat qnncq vgxzy hmrty vbynh ytmq ixur qyhvurn
 vlvhpq yhme ytn gvrrnh bnniq imsn v uxuvrnuvhmvu yxx
 
@@ -17,7 +17,7 @@ nkyhv ixur gnavzqn ytn xqavhq lnhn cxfnp yx ytn bmhqy lnnsnup mu cvhat yx
 vfxmp axubimaymur lmyt ytn aixqmur anhncxud xb ytn lmuynh xidcemaq ytvusq
 ednxuratvur
 
-`
+```
 
 First, we ran the *freq.py* file to receive the statistics for n-grams present in the cipher text.
 
@@ -41,7 +41,7 @@ So we know that 'y' should be letter 't' and 't' equals 'h'. Next, we look at th
 
 Making this changes in the cipher text we reach this partial result:
 
-`
+```
 
 THE xqaAhq TzhN  xN qzNDAd lHIaH qEEcq AgxzT hIrHT AbTEh THIq ixNr qThANrE
 AlAhDq ThIe THE gArrEh bEEiq iIsE A NxNArENAhIAN Txx
@@ -55,11 +55,11 @@ EkThA ixNr gEaAzqE THE xqaAhq lEhE cxfED Tx THE bIhqT lEEsEND IN cAhaH Tx
 AfxID axNbiIaTINr lITH THE aixqINr aEhEcxNd xb THE lINTEh xidceIaq THANsq
 edExNraHANr
 
-`
+```
 
 Having some partial words completed we have know more clues and looking at the frequency distribution resources we can finally complete our plain text discovery and find the encription key:
 
-`
+```
 THE OSCARS TURN  ON SUNDAY WHICH SEEMS ABOUT RIGHT AFTER THIS LONG STRANGE
 AWARDS TRIP THE BAGGER FEELS LIKE A NONAGENARIAN TOO
 
@@ -71,7 +71,7 @@ OUGHT TO BE A PRESIDENT WINFREY THE SEASON DIDNT JUST SEEM EXTRA LONG IT WAS
 EXTRA LONG BECAUSE THE OSCARS WERE MOVED TO THE FIRST WEEKEND IN MARCH TO
 AVOID CONFLICTING WITH THE CLOSING CEREMONY OF THE WINTER OLYMPICS THANKS
 PYEONGCHANG
-`
+```
 
 ## Task 2: Encryption using Different Ciphers and Modes
 
