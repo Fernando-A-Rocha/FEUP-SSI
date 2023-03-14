@@ -1,8 +1,8 @@
-# Tas   k 7
+# Task 7
 
 To find the encryption key used in the provided context, the following function was built and executed:
 
-```
+```py
 from Crypto.Cipher import AES
 from Crypto.Util.Padding import pad, unpad
 
@@ -44,6 +44,6 @@ else:
 The steps it takes to fullfil our goal is, firstly, to pad the given message to the AES block size and convert the initialization vector from hex to a byte array.  
 Consequently, the given wordlist is iterated and the provided plaintext is encrypted with AES CBC mode for each word (after padding) and using the converted initialization vector, once the encrypted text matches that of the cipher text provided the key is found.
 
-```
+```console
 The key is: Syracuse
 ```
