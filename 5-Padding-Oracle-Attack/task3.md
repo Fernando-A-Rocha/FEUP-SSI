@@ -58,7 +58,7 @@ This results in the following code to perform the automated attack:
 
 Executing the attack it leads us to the secret message, even after a new connection to the oracle:
 
-![ExecutionResults](screenshots/DockerSetup.png)
+![ExecutionResults](screenshots/ResultTask3.png)
 
 
 
