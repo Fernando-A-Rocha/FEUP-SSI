@@ -131,7 +131,7 @@ if __name__ == "__main__":
                     secret[16-bit] = D2[16-bit] ^ xor_block[16-bit]
                     next_pad = bit + 1
                     for rev_index in range(1,next_pad):
-                        CC1[16 - rev_index] = 	next_pad ^ secret[16-rev_index] ^ xor_block[16-rev_index]
+                        CC1[16 - rev_index] = 	next_pad ^ D2[16-rev_index]
                     break
         Plain_text = secret.hex() + Plain_text
 		              
