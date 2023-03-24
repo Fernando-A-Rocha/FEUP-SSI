@@ -8,7 +8,7 @@ The following achieved that:
 
 ![validMAC](screenshots/validMac.png)
 
-Next we need to construct the padding for the following message (my personal name in this case) to pass in the url:
+Next we need to construct the padding for the following message with a pair *<keir,uid>* obtained from *key.txt* and the name being my personal name in this case:
 
 `123456:myname=JoaoSilva&uid=1001&lstcmd=1`
 
