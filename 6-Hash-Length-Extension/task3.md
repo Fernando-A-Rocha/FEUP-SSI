@@ -2,7 +2,7 @@
 
 In this task, the objective is to first generate a valid MAC for the request:
 
-- `myname=<name>&uid=<uid>&lstcmd=1&mac=<mac>`
+- `<key>:myname=<name>&uid=<uid>&lstcmd=1`
 
 The following achieved that:
 
@@ -10,7 +10,7 @@ The following achieved that:
 
 Next we need to construct the padding for the following message (my personal name in this case) to pass in the url:
 
-123456:myname=JoaoSilva&uid=1001&lstcmd=1
+`123456:myname=JoaoSilva&uid=1001&lstcmd=1`
 
 Length of message: 41 bytes
 
@@ -29,7 +29,7 @@ SHA256 will be performed in the following padded message:
  
 
 
-URL: Padding: %80%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%01%48  
+`Padding: %80%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%01%48`
 
 
 Also, having the MAC of the original message, we can now produce a new MAC for the whole request with the extra download command, using the *length_ext.c* file:
@@ -64,7 +64,7 @@ New MAC produced:
 
 Based on the *<mac>* calculated above, we can now construct a new request that includes the *download* command without using the secret key:
 
-`http://10.9.0.80/?myname=JoaoSilva&uid=1001&lstcmd=1%80%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%01%48&download=secret.txt&``mac=278dae05f1fa3eb5b39674bc369e6df2e4971d1d1356a7d8a21407cb46d9122b`
+`http://10.9.0.80/?myname=JoaoSilva&uid=1001&lstcmd=1%80%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%01%48&download=secret.txt&mac=278dae05f1fa3eb5b39674bc369e6df2e4971d1d1356a7d8a21407cb46d9122b`
 
 Sending this request using the browser, we achieved the objective, revealing the content of the secret.txt:
 
