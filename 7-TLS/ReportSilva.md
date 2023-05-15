@@ -10,7 +10,7 @@ handshake protocol.
 
 #### Questions  
 
-<mark>What is the cipher used between the client and the server?<mark>
+**What is the cipher used between the client and the server?**
 
 We can know the cipher used between the client and the server by looking at the output of the print statement on line 22.
 This statement prints the cipher suite that was negotiated during the handshake. A cipher suite is a combination of encryption and authentication algorithms that are used for securing the communication.
@@ -21,7 +21,7 @@ This means that the cipher suite is TLS_AES_256_GCM_SHA384, which uses AES-256 f
 
 
 
-<mark>Please print out the server certificate in the program.<mark>
+**Please print out the server certificate in the program.**
 
 ```rust
 
@@ -92,13 +92,13 @@ The client program has received and verified the server's certificate during the
 
 The client program also prints a list of dictionaries containing information about all the CA certificates loaded in the SSL context object. These are the certificates that the client trusts and uses to verify the server's certificate. Each dictionary contains similar fields as above, such as issuer, subject, notAfter, etc.
 
-<mark>Explain the purpose of /etc/ssl/certs<mark>
+**Explain the purpose of /etc/ssl/certs**
 
 The purpose of /etc/ssl/certs is to store the certificates of trusted Certificate Authorities (CAs) that are used to verify the identity of servers and encrypt the communication using TLS. The directory contains PEM files of CA certificates that are installed by default or by the user. The context.load_verify_locations(capath=cadir) line in the code tells the TLS context to load the certificates from this directory and use them to validate the server certificate.
 
-<mark>Use Wireshark to capture the network traffics during the execution of the program, and explain your
+**Use Wireshark to capture the network traffics during the execution of the program, and explain your
 observation. In particular, explain which step triggers the TCP handshake, and which step triggers the
-TLS handshake. Explain the relationship between the TLS handshake and the TCP handshake<mark>
+TLS handshake. Explain the relationship between the TLS handshake and the TCP handshake**
 
 In this code, the TCP handshake is triggered by the sock.connect((hostname, port)) line, which establishes a TCP connection to the server at the specified hostname and port. The TLS handshake is triggered by the ssock.do_handshake() line, which initiates the TLS protocol negotiation with the server using the established TCP connection. The relationship between the TLS handshake and the TCP handshake is that the former relies on the latter to provide a reliable and ordered data transmission channel. The TLS handshake cannot start until the TCP handshake is completed.
 
