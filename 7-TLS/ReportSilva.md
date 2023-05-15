@@ -102,3 +102,114 @@ In this code, the TCP handshake is triggered by the sock.connect((hostname, port
 
 Using wireshark to capture the network traffics during the execution we were able to see the exchange of packets on the TCP handshake and TLS Handshake.
 The TCP handshake consists of three packets: SYN, SYN-ACK and ACK. The TLS handshake consists of several packets, such as Client Hello, Server Hello, Certificate, Server Key Exchange, Client Key Exchange, Change Cipher Spec and Finished.
+
+
+### Task 1.b: CA's Certificate
+
+By changing the cadir directory to our custom directory, we encounter an error during the TLS handshake, since we don't have the correct CA certificates in the ./client-certs.
+The error is something like "certificate verify failed: unable to get local issuer certificate". This means that the client cannot find the CA certificate that matches the issuer of the server certificate, and therefore cannot verify the server's identity. To fix this error, we need to copy the CA certificate from the /etc/ssl/certs directory and put it in the cadir directory. Also we need to make sure that the CA certificate has a .pem extension and a hash-based symbolic link, as explained in the lab description.
+
+Procedure:
+
+```bash
+
+#Look for the CA certificate that matches the issuer of the server certificate, according to executions of the handshake.py script.
+ls /etc/ssl/certs
+
+#Copy the CA certificate to cadir directory
+cp /etc/ssl/certs/DigiCert_Global_Root_CA.pem ./client-certs
+
+#Create an hash value from the subject field -> 3513523f
+openssl x509 -in DigiCert_Global_Root_CA.pem -noout -subject_hash
+
+#Symbolic link between the file with hash value and CA file
+ln -s DigiCert_Global_Root_CA.pem 3513523f.0
+
+#Perform successfuly the handshake again
+
+```
+
+### Task 1.c:  Experiment with the hostname check
+
+
+The objective of task 1.c is to help understand the importance of hostname checks at the client side(github.com)(moodle.up.pt). The hostname check is a mechanism to verify whether the server's hostname matches the one in its certificate.
+
+##### Explain the importance of hostname check. If the client program does not perform the hostname check, what is the security consequence?
+
+The hostname check is a process of verifying whether the server's hostname matches the one in its certificate. This is necessary to prevent man-in-the-middle attacks, where an attacker can intercept the TLS connection and present a fake certificate that is signed by a trusted CA, but belongs to a different domain name. If the client program does not perform the hostname check, it may accept the fake certificate and establish a secure connection with the attacker, instead of the intended server. The attacker can then decrypt and modify the data sent between the client and the server, without being detected. Therefore, hostname check is an essential part of TLS security.
+
+
+We are connecting to the server using its IP address, but pretending that it is www.example2020.com. If our client program performs the hostname check correctly, it rejects the connection, because the server's certificate does not match www.example2020.com.
+
+### Task 1.d:  Sending and getting Data
+
+The purpose of task 1.d is to learn how to send and receive data over the secure connection established by TLS.
+
+```python
+
+#The tls client code for sending and receiving data over the secure connection
+
+#!/usr/bin/env python3
+
+import socket
+import ssl
+import sys
+import pprint
+
+hostname = sys.argv[1]
+port = 443
+#cadir = '/etc/ssl/certs'
+cadir = './client-certs'
+
+# Set up the TLS context
+context = ssl.SSLContext(ssl.PROTOCOL_TLS_CLIENT)  # For Ubuntu 20.04 VM
+# context = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2)      # For Ubuntu 16.04 VM
+
+context.load_verify_locations(capath=cadir)
+context.verify_mode = ssl.CERT_REQUIRED
+context.check_hostname = True
+
+# Create TCP connection
+sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+sock.connect((hostname, port))
+input("After making TCP connection. Press any key to continue ...")
+
+# Add the TLS
+ssock = context.wrap_socket(sock, server_hostname=hostname,
+                            do_handshake_on_connect=False)
+ssock.do_handshake()   # Start the handshake
+print("=== Cipher used: {}".format(ssock.cipher()))
+print("=== Server hostname: {}".format(ssock.server_hostname))
+print("=== Server certificate:")
+pprint.pprint(ssock.getpeercert())
+pprint.pprint(context.get_ca_certs())
+input("After TLS handshake. Press any key to continue ...")
+
+# Send HTTP Request to Server
+request = b"GET / HTTP/1.0\r\nHost: " + \
+hostname.encode('utf-8') + b"\r\n\r\n"
+ssock.sendall(request)
+
+# Send HTTP Request to Server to fetch an image
+# request = b"GET /logo.png HTTP/1.1\r\nHost: " + \
+# hostname.encode('utf-8') + b"\r\nConnection: close\r\n\r\n"
+# ssock.sendall(request)
+
+# Read HTTP Response from Server
+response = ssock.recv(2048)
+while response:
+	pprint.pprint(response.split(b"\r\n"))
+	response = ssock.recv(2048)
+
+# Close the TLS Connection
+ssock.shutdown(socket.SHUT_RDWR)
+ssock.close()
+
+
+
+
+```
+
+
+
+
