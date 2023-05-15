@@ -23,7 +23,7 @@ This means that the cipher suite is TLS_AES_256_GCM_SHA384, which uses AES-256 f
 
 - Please print out the server certificate in the program
 
-rust```
+```rust
 
 Server certificate:
 {'OCSP': ('http://ocsp.digicert.com',),
