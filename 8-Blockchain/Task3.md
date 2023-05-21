@@ -3,7 +3,8 @@
 For this task, the objective is to run the reentrancy attack and steal the money of the victim contract (25 eth). For this purpouse, the script _launch\_attack.py_ was modified to contain the attackers address and executed to launch the attack. 
 
 Output of get_balance.py before the attack is launched:
-```
+```bash
+
 ----------------------------------------------------------
 *** This client program connects to 10.151.0.71:8545
 *** The following are the accounts on this Ethereum node
@@ -12,10 +13,12 @@ Output of get_balance.py before the attack is launched:
 ----------------------------------------------------------
   Victim: 0x744c284812517b382FA6B79A555A55d3cDC19C18: 25000000000000000000
 Attacker: 0xCD292478210B48b5cE415677d51a9B4d4009c321: 0
+
 ```
 
 Output of get_balance.py after the attack is launched:
-```
+```bash
+
 ----------------------------------------------------------
 *** This client program connects to 10.151.0.71:8545
 *** The following are the accounts on this Ethereum node
@@ -25,13 +28,15 @@ Output of get_balance.py after the attack is launched:
   Victim: 0x744c284812517b382FA6B79A555A55d3cDC19C18: 0
 Attacker: 0xCD292478210B48b5cE415677d51a9B4d4009c321: 26000000000000000000
 
+
 ```
 
 As observable in the output of the get_balance.py script before and after the attack is executed, we can conclude that it succeeds, given that the victim's money (25 eth) is completely drained into the attackers smart contract.
 Consequently, the cashout.py script is run and the attackers money is transferred into another account (the first one).
 
 Output of get_balance.py after executing cashout.py into the first account:
-```
+```bash
+
 ----------------------------------------------------------
 *** This client program connects to 10.151.0.71:8545
 *** The following are the accounts on this Ethereum node
@@ -40,4 +45,5 @@ Output of get_balance.py after executing cashout.py into the first account:
 ----------------------------------------------------------
   Victim: 0x744c284812517b382FA6B79A555A55d3cDC19C18: 0
 Attacker: 0xCD292478210B48b5cE415677d51a9B4d4009c321: 0
+
 ```
